@@ -334,6 +334,8 @@ export function stringifyString(
     // force double quotes on control characters & unpaired surrogates
     if (/[\x00-\x08\x0b-\x1f\x7f-\x9f\u{D800}-\u{DFFF}]/u.test(ss.value))
       type = Scalar.QUOTE_DOUBLE
+    if (/^([0-1][0-9]|2[0-3]):([0-5][0-9])$/u.test(ss.value))
+      type = Scalar.QUOTE_DOUBLE
   }
 
   const _stringify = (_type: Scalar.Type | undefined) => {
